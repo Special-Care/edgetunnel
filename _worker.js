@@ -1030,7 +1030,7 @@ async function 读取config_JSON(env, hostname, userID, path, 重置配置 = fal
 async function 生成随机IP(request, count = 16, 指定端口 = -1) {
     const asnMap = { '9808': 'cmcc', '4837': 'cu', '4134': 'ct' }, asn = request.cf.asn;
     const cidr_url = asnMap[asn] ? `https://raw.githubusercontent.com/cmliu/cmliu/main/CF-CIDR/${asnMap[asn]}.txt` : 'https://raw.githubusercontent.com/cmliu/cmliu/main/CF-CIDR.txt';
-    const cfname = { '9808': 'CF移动优选', '4837': 'CF联通优选', '4134': 'CF电信优选' }[asn] || 'CF官方优选';
+    const cfname = { '9808': '移动优选', '4837': '联通优选', '4134': '电信优选' }[asn] || '官方优选';
     const cfport = [443, 2053, 2083, 2087, 2096, 8443];
     let cidrList = [];
     try { const res = await fetch(cidr_url); cidrList = res.ok ? await 整理成数组(await res.text()) : ['104.16.0.0/13']; } catch { cidrList = ['104.16.0.0/13']; }
@@ -1578,4 +1578,5 @@ async function html1101(host, 访问IP) {
 </body>
 </html>`;
 }
+
 
